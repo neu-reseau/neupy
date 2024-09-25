@@ -70,3 +70,35 @@ void free_NeuArray(NeuArray* narr){{
         free(narr);
     }
 }}
+
+NeuArray* zeros(const int* shape, int dim){
+    NeuArray *narr = create_NeuArray(shape,dim);
+    for (int i = 0; i < narr->size; i++) {
+        narr->val[i] = 0;
+    }
+    return narr;
+}
+
+NeuArray* ones(const int* shape, int dim){
+    NeuArray *narr = create_NeuArray(shape,dim);
+    for (int i = 0; i < narr->size; i++) {
+        narr->val[i] = 1;
+    }
+    return narr;
+}
+
+NeuArray* eye(const int* shape, int dim){
+    NeuArray *narr = create_NeuArray(shape,dim);
+    int total_size=NeuArray_len(shape,dim);
+    int diagonal_step=1+shape[dim-1],diagonal=0;
+    for(int i=0;i<total_size;i++){
+        if(i==diagonal && diagonal<total_size){
+            narr->val[i]=1;
+            diagonal+=diagonal_step;
+        }else{
+            narr->val[i]=0;
+        }
+    }
+    return narr;
+}
+
