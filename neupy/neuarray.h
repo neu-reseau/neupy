@@ -31,7 +31,7 @@ NeuArray* create_NeuArray(const int* shape, int dim){
     return narr;
 }
 
-int NeuArray_len(const int* shape,int dim){
+int len(const int* shape,int dim){
     int s=1;
     for(int i=0;i<dim;i++){
         s*=shape[i];
@@ -89,7 +89,7 @@ NeuArray* ones(const int* shape, int dim){
 
 NeuArray* eye(const int* shape, int dim){
     NeuArray *narr = create_NeuArray(shape,dim);
-    int total_size=NeuArray_len(shape,dim);
+    int total_size=len(shape,dim);
     int diagonal_step=1+shape[dim-1],diagonal=0;
     for(int i=0;i<total_size;i++){
         if(i==diagonal && diagonal<total_size){
@@ -102,3 +102,29 @@ NeuArray* eye(const int* shape, int dim){
     return narr;
 }
 
+int check_shape(const NeuArray* n1,const NeuArray* n2){
+    if(n1->dim != n2->dim || n1->size!=n2->size){
+        return 0;
+    }
+    for(int i=0;i<n1->dim;i++){
+        if(n1->shape[i]!=n2->shape[i]){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+NeuArray* add(const NeuArray* n1, const NeuArray* n2){
+    if(!check_shape(n1,n2)){
+        fprintf(stderr,"Error : Shape Mismatch\n");
+        return NULL;
+    }
+    NeuArray* res= create_NeuArray(n1->shape,n1->dim);
+    if(res==NULL){
+        printf("DMA Failed | Result NeuArray doesn't exist\n");
+    }
+    for(int i=0;i<n1->size;i++){
+        res->val[i]=n1->val[i]+n2->val[i];
+    }
+    return res;
+}
