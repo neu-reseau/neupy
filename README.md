@@ -1,6 +1,6 @@
-# Neupy: A Simple Numpy Clone in C
+# Neupy
 
-!(neupy)[logo.png]
+![neupy](logo.png)
 
 ## Overview
 
