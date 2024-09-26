@@ -1,8 +1,10 @@
-# NeuArray: A Simple Numpy Clone in C
+# Neupy: A Simple Numpy Clone in C
+
+!(neupy)[logo.png]
 
 ## Overview
 
-**NeuArray** is a basic implementation of the fundamental features of the NumPy library written in C. It provides multi-dimensional array support and operations commonly used in scientific computing, machine learning, and data manipulation. This project simulates the core array-based operations such as array creation, mathematical operations, reshaping, and matrix multiplication, offering a foundation for array manipulation in a style similar to Python’s NumPy.
+**Neupy** is a basic implementation of the fundamental features of the NumPy library written in C. It provides multi-dimensional array support and operations commonly used in scientific computing, machine learning, and data manipulation. This project simulates the core array-based operations such as array creation, mathematical operations, reshaping, and matrix multiplication, offering a foundation for array manipulation in a style similar to Python’s NumPy.
 
 ## Features
 
